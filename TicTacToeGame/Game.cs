@@ -32,7 +32,11 @@ namespace TicTacToeGame
 
         public char ChangePlayer(char player)
         {
-            return 'O';
+            if (player == 'X')
+            {
+                return 'O';
+            }
+            else return 'X';
         }
     }
 }

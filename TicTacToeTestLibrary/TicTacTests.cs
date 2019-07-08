@@ -53,5 +53,16 @@ namespace TicTacToeTestLibrary
 
             Assert.AreEqual('O', player);
         }
+
+        [Test]
+        public void GivenPlayerO_WhenNextTurn_ReturnPlayerX()
+        {
+            var player = 'O';
+
+            var game = new TicTacToeGame.Game();
+            player = game.ChangePlayer(player);
+
+            Assert.AreEqual('X', player);
+        }
     }
 }
