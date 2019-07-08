@@ -10,19 +10,14 @@ namespace TicTacToeGame
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to Tic Tac Toe!");
+            Console.WriteLine("Welcome to Tic Tac Toe!\n");
 
             var gamer = new Game();
             var newGame = gamer.NewGame();
 
-            for(var row = 0; row < 3; row++)
-            {
-                for(var column=0; column<3;column++)
-                {
-                    Console.Write(newGame[row, column]);
-                }
-                Console.WriteLine("\n");
-            }
+            Console.WriteLine("Here's the current board:\n");
+
+            gamer.PrintBoard(newGame);
         }
     }
 }
