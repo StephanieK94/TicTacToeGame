@@ -20,5 +20,10 @@ namespace TicTacToeTestLibrary
 
             Assert.AreEqual(expected, newGame);
         }
+
+        [Test]
+        public void Passes()
+        {
+        }
     }
 }
