@@ -21,8 +21,13 @@ namespace TicTacToeGame
                 {
                     Console.Write(game[row, column]);
                 }
-                Console.WriteLine("\n");
+                Console.WriteLine();
             }
+        }
+
+        public char PlayMove(char player)
+        {
+            return 'X';
         }
     }
 }
