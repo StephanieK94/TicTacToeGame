@@ -27,7 +27,7 @@ namespace TicTacToeGame
 
         public char PlayMove(char player)
         {
-            return 'X';
+            return player;
         }
     }
 }

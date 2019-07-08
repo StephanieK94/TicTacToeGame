@@ -22,9 +22,20 @@ namespace TicTacToeTestLibrary
         }
 
         [Test]
-        public void GivenPlayer_ReturnCharacterX()
+        public void GivenPlayerOne_ReturnCharacterX()
         {
             var player = 'X';
+
+            var game = new TicTacToeGame.Game();
+            var turn = game.PlayMove(player);
+
+            Assert.AreEqual(player, turn);
+        }
+
+        [Test]
+        public void GivenPlayerTwo_ReturnCharacterO()
+        {
+            var player = 'O';
 
             var game = new TicTacToeGame.Game();
             var turn = game.PlayMove(player);
