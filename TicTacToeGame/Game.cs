@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace TicTacToeGame
 {
-    class Program
+    public class Game
     {
-        static void Main(string[] args)
+        public char[,] NewGame()
         {
-            Console.WriteLine("Welcome to Tic Tac Toe!");
+            return new char[3, 3];
         }
     }
 }
