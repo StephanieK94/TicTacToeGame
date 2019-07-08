@@ -12,12 +12,12 @@ namespace TicTacToeGame
         {
             Console.WriteLine("Welcome to Tic Tac Toe!\n");
 
-            var gamer = new Game();
-            var newGame = gamer.CreateNewGame();
+            var game = new Game();
+            var currentBoard = game.CreateNewGame();
 
             Console.WriteLine("Here's the current board:\n");
 
-            gamer.PrintBoard(newGame);
+            game.PrintBoard(currentBoard);
         }
     }
 }

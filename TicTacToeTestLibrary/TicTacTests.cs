@@ -54,9 +54,25 @@ namespace TicTacToeTestLibrary
             var currentBoard = game.CreateNewGame();
 
             currentBoard = game.PlayMove(player1, currentBoard, row, column);
-            //var expected = new char[3, 3] { { 'X', '-', '-' }, { '-', '-', '-' }, { '-', '-', '-' } };
+            var expected = new char[3, 3] { { 'X', '-', '-' }, { '-', '-', '-' }, { '-', '-', '-' } };
 
-            Assert.AreEqual('X', currentBoard[0, 0]);
+            Assert.AreEqual(expected, currentBoard);
         }
+
+        [Test]
+        public void GivenCurrentBoard_WhenPlaysMoveInNewPosition_ReturnsTrueIfValidMove()
+        {
+            var player1 = 'O';
+
+            var row = 0;
+            var column = 1;
+
+            var currentBoard = new char[3, 3] { { 'X', '-', '-' }, { '-', '-', '-' }, { '-', '-', '-' } };
+            var isValid = game.ValidateMove(player1, currentBoard, row, column);
+
+            Assert.True(isValid);
+        }
+
+
     }
 }
