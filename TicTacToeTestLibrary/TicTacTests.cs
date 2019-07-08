@@ -16,32 +16,12 @@ namespace TicTacToeTestLibrary
         [Test]
         public void GivenNewGame_ReturnsGameBoardLayout()
         {
-            var newGame = game.CreateNewGame();
+            var currentBoard = game.CreateNewGame();
 
             var expected = new char[3, 3] { {'-','-','-' }, { '-', '-', '-' }, { '-', '-', '-' } };
 
-            Assert.AreEqual(expected, newGame);
+            Assert.AreEqual(expected, currentBoard);
         }
-
-        //[Test]
-        //public void GivenPlayerOne_ReturnCharacterX()
-        //{
-        //    var player = 'X';
-
-        //    var turn = game.PlayMove(player);
-
-        //    Assert.AreEqual(player, turn);
-        //}
-
-        //[Test]
-        //public void GivenPlayerTwo_ReturnCharacterO()
-        //{
-        //    var player = 'O';
-
-        //    var turn = game.PlayMove(player);
-
-        //    Assert.AreEqual(player, turn);
-        //}
 
         [Test]
         public void GivenPlayerX_WhenNextTurn_ReturnPlayerO()
@@ -63,37 +43,6 @@ namespace TicTacToeTestLibrary
             Assert.AreEqual('X', player);
         }
 
-        //[Test]
-        //public void GivenPositions_WhenPlayerMoves_ChangeBoard()
-        //{
-        //    var player = 'O';
-        //    var row = 0;
-        //    var column = 0;
-
-        //    var newGame = game.CreateNewGame();
-
-        //    newGame[row,column] = game.PlayMove(player);
-
-        //    Assert.AreEqual('O', newGame[0,0]);
-        //}
-
-        //[Test]
-        //public void GivenPlayer1Position_WhenPlayer2PlaysSamePosition_ThrowsException()
-        //{
-        //    var player1 = 'X';
-        //    var player2 = 'O';
-
-        //    var row = 0;
-        //    var column = 0;
-
-        //    var newGame = game.CreateNewGame();
-
-        //    newGame[row, column] = game.PlayMove(player1, newGame);
-        //    newGame[row, column] = game.PlayMove(player2);
-
-        //    Assert.AreEqual('X', newGame[0, 0]);
-        //}
-
         [Test]
         public void GivenCurrentBoard_WhenPlaysMove_ReturnsChangedBoard()
         {
@@ -102,12 +51,12 @@ namespace TicTacToeTestLibrary
             var row = 0;
             var column = 0;
 
-            var newGame = game.CreateNewGame();
+            var currentBoard = game.CreateNewGame();
 
-            newGame = game.PlayMove(player1, newGame, row, column);
+            currentBoard = game.PlayMove(player1, currentBoard, row, column);
             //var expected = new char[3, 3] { { 'X', '-', '-' }, { '-', '-', '-' }, { '-', '-', '-' } };
 
-            Assert.AreEqual('X', newGame[0, 0]);
+            Assert.AreEqual('X', currentBoard[0, 0]);
         }
     }
 }
