@@ -11,9 +11,14 @@ namespace TicTacToeTestLibrary
     public class TicTacTests
     {
         [Test]
-        public void Passes()
+        public void GivenNewGame_ReturnsCharArray()
         {
-            Assert.Pass();
+            var game = new TicTacToeGame.Game();
+
+            var newGame = game.NewGame();
+            var expected = new char[3, 3];
+
+            Assert.AreEqual(expected, newGame);
         }
     }
 }
