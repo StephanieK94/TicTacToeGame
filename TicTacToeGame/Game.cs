@@ -10,7 +10,7 @@ namespace TicTacToeGame
     {
         public char[,] NewGame()
         {
-            return new char[3, 3];
+            return new char[3, 3] { { '-', '-', '-' }, { '-', '-', '-' }, { '-', '-', '-' } };
         }
     }
 }
