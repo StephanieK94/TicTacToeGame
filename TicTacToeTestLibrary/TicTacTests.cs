@@ -73,6 +73,18 @@ namespace TicTacToeTestLibrary
             Assert.True(isValid);
         }
 
+        [Test]
+        public void GivenCurrentBoard_WhenPlaysMoveInNewPosition_ReturnsFalseIfInvalidMove()
+        {
+            var player1 = 'O';
 
+            var row = 0;
+            var column = 0;
+
+            var currentBoard = new char[3, 3] { { 'X', '-', '-' }, { '-', '-', '-' }, { '-', '-', '-' } };
+            var isValid = game.ValidateMove(player1, currentBoard, row, column);
+
+            Assert.False(isValid);
+        }
     }
 }
