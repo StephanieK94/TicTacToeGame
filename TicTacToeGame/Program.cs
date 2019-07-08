@@ -13,7 +13,7 @@ namespace TicTacToeGame
             Console.WriteLine("Welcome to Tic Tac Toe!\n");
 
             var gamer = new Game();
-            var newGame = gamer.NewGame();
+            var newGame = gamer.CreateNewGame();
 
             Console.WriteLine("Here's the current board:\n");
 

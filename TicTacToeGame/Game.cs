@@ -8,7 +8,7 @@ namespace TicTacToeGame
 {
     public class Game
     {
-        public char[,] NewGame()
+        public char[,] CreateNewGame()
         {
             return new char[3, 3] { { '-', '-', '-' }, { '-', '-', '-' }, { '-', '-', '-' } };
         }
@@ -25,9 +25,10 @@ namespace TicTacToeGame
             }
         }
 
-        public char PlayMove(char player)
+        public char[,] PlayMove(char player, char[,] gameBoard, int row, int column)
         {
-            return player;
+            gameBoard[row, column] = player;
+            return gameBoard;
         }
 
         public char ChangePlayer(char player)
