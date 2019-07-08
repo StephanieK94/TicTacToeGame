@@ -29,5 +29,10 @@ namespace TicTacToeGame
         {
             return player;
         }
+
+        public char ChangePlayer(char player)
+        {
+            return 'O';
+        }
     }
 }
