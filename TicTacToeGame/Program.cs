@@ -17,7 +17,9 @@ namespace TicTacToeGame
 
             Console.WriteLine("Here's the current board:\n");
 
-            game.PrintBoard(currentBoard);
+            var printer = new Printer();
+
+            printer.PrintBoard(currentBoard);
         }
     }
 }
