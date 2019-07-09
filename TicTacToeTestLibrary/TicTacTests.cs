@@ -71,29 +71,28 @@ namespace TicTacToeTestLibrary
         }
 
         [Test]
-        public void GivenCurrentBoard_WhenPlaysMoveInNewPosition_ReturnsTrueIfValidMove()
+        public void GivenPlayer_WhenValidatingMoveInNewPosition_ReturnsTrueForMove()
         {
-            var player1 = 'O';
+            player.Token = 'X';
+            player.Row = 0;
+            player.Column = 0;
 
-            var row = 0;
-            var column = 1;
+            var currentBoard = new char[3, 3] { { '-', '-', '-' }, { '-', '-', '-' }, { '-', '-', '-' } };
 
-            var currentBoard = new char[3, 3] { { 'X', '-', '-' }, { '-', '-', '-' }, { '-', '-', '-' } };
-            var isValid = operations.ValidateMove(player1, currentBoard, row, column);
+            var isValid = operations.ValidateMove(player, currentBoard);
 
             Assert.True(isValid);
         }
 
         [Test]
-        public void GivenCurrentBoard_WhenPlaysMoveInNewPosition_ReturnsFalseIfInvalidMove()
+        public void GivenPlayer_WhenValidatingMoveInSamePosition_ReturnsFalseIfInvalidMove()
         {
-            var player1 = 'O';
-
-            var row = 0;
-            var column = 0;
+            player.Token = 'O';
+            player.Row = 0;
+            player.Column = 0;
 
             var currentBoard = new char[3, 3] { { 'X', '-', '-' }, { '-', '-', '-' }, { '-', '-', '-' } };
-            var isValid = operations.ValidateMove(player1, currentBoard, row, column);
+            var isValid = operations.ValidateMove(player, currentBoard);
 
             Assert.False(isValid);
         }
