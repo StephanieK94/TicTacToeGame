@@ -15,7 +15,7 @@ namespace TicTacToeTestLibrary
         private GameOperations operations = new GameOperations();
 
         [Test]
-        public void WhenCalled_ReturnsEmptyPlayer()
+        public void WhenCalledPlayer_ReturnsNewPlayerWithToken()
         {
             var player = new Player
             {
