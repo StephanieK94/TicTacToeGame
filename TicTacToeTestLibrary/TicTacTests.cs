@@ -15,17 +15,6 @@ namespace TicTacToeTestLibrary
         private GameOperations operations = new GameOperations();
 
         [Test]
-        public void WhenCalledPlayer_ReturnsNewPlayerWithToken()
-        {
-            var player = new Player
-            {
-                Token = 'X'
-            };
-
-            Assert.AreEqual('X', player.Token);
-        }
-
-        [Test]
         public void GivenNewInstanceOfGame_ReturnsEmptyCharArray()
         {
             var newGame = game.CreateNewGame();
