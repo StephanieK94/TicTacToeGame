@@ -11,13 +11,14 @@ namespace TicTacToeTestLibrary
     [TestFixture]
     public class TicTacTests
     {
-        private Game game = new TicTacToeGame.Game();
+        private GameBoard game = new TicTacToeGame.GameBoard();
         private GameOperations operations = new GameOperations();
+        private Player player = new Player();
 
         [Test]
         public void GivenNewInstanceOfGame_ReturnsEmptyCharArray()
         {
-            var newGame = game.CreateNewGame();
+            var newGame = game.CreateNewGameBoard();
             char[,] expected = new char[3, 3] { { '-', '-', '-' }, { '-', '-', '-' }, { '-', '-', '-' } };
 
             Assert.AreEqual(expected, newGame);
@@ -26,7 +27,7 @@ namespace TicTacToeTestLibrary
         [Test]
         public void GivenNewGame_ReturnsGameBoardLayout()
         {
-            var currentBoard = game.CreateNewGame();
+            var currentBoard = game.CreateNewGameBoard();
 
             var expected = new char[3, 3] { {'-','-','-' }, { '-', '-', '-' }, { '-', '-', '-' } };
 
@@ -54,16 +55,16 @@ namespace TicTacToeTestLibrary
         }
 
         [Test]
-        public void GivenCurrentBoard_WhenPlaysMove_ReturnsChangedBoard()
+        public void GivenPlayer_WhenPlaysMove_ReturnsBoard()
         {
-            var player1 = 'X';
+            player.Token = 'X';
+            player.Row = 0;
+            player.Column = 0;
 
-            var row = 0;
-            var column = 0;
+            var currentBoard = game.CreateNewGameBoard();
 
-            var currentBoard = game.CreateNewGame();
+            currentBoard = operations.PlayMove(player, currentBoard);
 
-            currentBoard = operations.PlayMove(player1, currentBoard, row, column);
             var expected = new char[3, 3] { { 'X', '-', '-' }, { '-', '-', '-' }, { '-', '-', '-' } };
 
             Assert.AreEqual(expected, currentBoard);

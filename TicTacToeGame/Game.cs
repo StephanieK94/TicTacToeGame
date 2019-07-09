@@ -5,13 +5,13 @@ using System.Threading.Tasks;
 
 namespace TicTacToeGame
 {
-    public class Game
+    public class GameBoard
     {
-        private char[,] game;
+        private char[,] board;
 
-        public char[,] CreateNewGame()
+        public char[,] CreateNewGameBoard()
         {
-            return this.game = new char[3,3] { { '-', '-', '-' }, { '-', '-', '-' }, { '-', '-', '-' } };
+            return this.board = new char[3,3] { { '-', '-', '-' }, { '-', '-', '-' }, { '-', '-', '-' } };
         }
     }
 }
