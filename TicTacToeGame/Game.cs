@@ -24,30 +24,5 @@ namespace TicTacToeGame
                 Console.WriteLine();
             }
         }
-
-        public char[,] PlayMove(char player, char[,] gameBoard, int row, int column)
-        {
-            gameBoard[row,column] = player;
-            return gameBoard;
-        }
-
-        public char ChangePlayer(char player)
-        {
-            if (player == 'X')
-            {
-                return 'O';
-            }
-            else return 'X';
-        }
-
-        public bool ValidateMove(char player1, char[,] currentBoard, int row, int column)
-        {
-            if(currentBoard[row,column] == '-')
-            {
-                return true;
-            }
-            return false;
-            //throw new NotImplementedException();
-        }
     }
 }

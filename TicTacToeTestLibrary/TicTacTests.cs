@@ -12,6 +12,7 @@ namespace TicTacToeTestLibrary
     public class TicTacTests
     {
         private Game game = new TicTacToeGame.Game();
+        private GameOperations operations = new GameOperations();
 
         [Test]
         public void GivenNewGame_ReturnsGameBoardLayout()
@@ -28,7 +29,7 @@ namespace TicTacToeTestLibrary
         {
             var player = 'X';
 
-            player = game.ChangePlayer(player);
+            player = operations.ChangePlayer(player);
 
             Assert.AreEqual('O', player);
         }
@@ -38,7 +39,7 @@ namespace TicTacToeTestLibrary
         {
             var player = 'O';
 
-            player = game.ChangePlayer(player);
+            player = operations.ChangePlayer(player);
 
             Assert.AreEqual('X', player);
         }
@@ -53,7 +54,7 @@ namespace TicTacToeTestLibrary
 
             var currentBoard = game.CreateNewGame();
 
-            currentBoard = game.PlayMove(player1, currentBoard, row, column);
+            currentBoard = operations.PlayMove(player1, currentBoard, row, column);
             var expected = new char[3, 3] { { 'X', '-', '-' }, { '-', '-', '-' }, { '-', '-', '-' } };
 
             Assert.AreEqual(expected, currentBoard);
@@ -68,7 +69,7 @@ namespace TicTacToeTestLibrary
             var column = 1;
 
             var currentBoard = new char[3, 3] { { 'X', '-', '-' }, { '-', '-', '-' }, { '-', '-', '-' } };
-            var isValid = game.ValidateMove(player1, currentBoard, row, column);
+            var isValid = operations.ValidateMove(player1, currentBoard, row, column);
 
             Assert.True(isValid);
         }
@@ -82,7 +83,7 @@ namespace TicTacToeTestLibrary
             var column = 0;
 
             var currentBoard = new char[3, 3] { { 'X', '-', '-' }, { '-', '-', '-' }, { '-', '-', '-' } };
-            var isValid = game.ValidateMove(player1, currentBoard, row, column);
+            var isValid = operations.ValidateMove(player1, currentBoard, row, column);
 
             Assert.False(isValid);
         }
