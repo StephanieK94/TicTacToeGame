@@ -11,7 +11,7 @@ namespace TicTacToeGame
 
         public char[,] CreateNewGame()
         {
-            return game = new char[3,3] { { '-', '-', '-' }, { '-', '-', '-' }, { '-', '-', '-' } };
+            return this.game = new char[3,3] { { '-', '-', '-' }, { '-', '-', '-' }, { '-', '-', '-' } };
         }
     }
 }
