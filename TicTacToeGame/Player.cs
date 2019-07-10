@@ -25,5 +25,11 @@ namespace TicTacToeGame
             else this.Position = Token.X;
         }
 
+        public void GetUserInput()
+        {
+            this.Row = 0;
+            this.Column = 1;
+
+        }
     }
 }

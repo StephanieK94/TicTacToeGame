@@ -17,7 +17,11 @@ namespace TicTacToeGame
 
             printer.PrintWelcome(currentBoard);
 
-            
+            var player = new Player();
+            player.Position = Token.X;
+
+            player.GetUserInput();
+            player.SetUserPosition(player.Row, player.Column);
         }
     }
 }

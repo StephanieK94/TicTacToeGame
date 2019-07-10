@@ -38,6 +38,15 @@ namespace TicTacToeTestLibrary
             Assert.AreEqual(column, player.Column);
         }
 
-        
+        [Test]
+        public void WhenUserInputGiven_ReturnSetPosition()
+        {
+            GameOperations gameOperator = new GameOperations();
+            player.Position = Token.X;
+            player.GetUserInput();
+
+            Assert.AreEqual(0, player.Row);
+            Assert.AreEqual(1, player.Column);
+        }
     }
 }
