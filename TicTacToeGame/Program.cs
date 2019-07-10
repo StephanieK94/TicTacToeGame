@@ -14,6 +14,7 @@ namespace TicTacToeGame
             var currentBoard = game.CreateNewGameBoard();
 
             var printer = new Printer();
+            var gameEnd = false;
 
             do
             {
@@ -45,7 +46,11 @@ namespace TicTacToeGame
                 //Check if we won before changing player
 
                 player.ChangePlayer(player.Position); 
-            } while (true);
+
+
+            } while (gameEnd != true);
+
+            // Game ends, declare winner or if draw
         }
     }
 }

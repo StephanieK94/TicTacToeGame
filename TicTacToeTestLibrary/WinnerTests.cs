@@ -14,7 +14,7 @@ namespace TicTacToeTestLibrary
         public class WinningTests
         {
             [Test]
-            public void GivenColumn_ReturnWinner()
+            public void GivenColumn1_ReturnWinner()
             {
                 var currentBoard = new Token[,] 
                 { 
@@ -32,7 +32,26 @@ namespace TicTacToeTestLibrary
             }
 
             [Test]
-            public void GivenRow_ReturnWinner()
+            public void GivenColumn2_ReturnWinner()
+            {
+                var currentBoard = new Token[,]
+                {
+                    { Token.Empty, Token.X, Token.Empty },
+                    { Token.Empty, Token.X, Token.Empty },
+                    { Token.Empty, Token.X, Token.Empty },
+
+                };
+
+                var player = new Player() { Position = Token.X };
+
+                var winnerCalculator = new WinnerCalculator();
+                var isWinner = winnerCalculator.IsColumnWinner(player, currentBoard);
+
+                Assert.True(isWinner);
+            }
+
+            [Test]
+            public void GivenRow1_ReturnWinner()
             {
                 var currentBoard = new Token[,]
                 {
@@ -45,6 +64,24 @@ namespace TicTacToeTestLibrary
 
                 var winnerCalculator = new WinnerCalculator();
                 var isWinner = winnerCalculator.CalculateIfWinner(player, currentBoard);
+
+                Assert.True(isWinner);
+            }
+
+            [Test]
+            public void GivenRow2_ReturnWinner()
+            {
+                var currentBoard = new Token[,]
+                {
+                    { Token.Empty, Token.Empty, Token.Empty },
+                    {Token.X, Token.X, Token.X  },
+                    { Token.Empty, Token.Empty, Token.Empty }
+                };
+
+                var player = new Player() { Position = Token.X };
+
+                var winnerCalculator = new WinnerCalculator();
+                var isWinner = winnerCalculator.IsRowWinner(player, currentBoard);
 
                 Assert.True(isWinner);
             }
