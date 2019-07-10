@@ -35,13 +35,15 @@ namespace TicTacToeTestLibrary
         }
 
         [Test]
-        public void GivenPlayerTokenEnum_WhenPrintingValidMove_PrintsPlayerNumber()
+        public void GivenInputForPosition_ReturnSetPositionForPlayer()
         {
-            player.Position = Token.X;
+            var row = 2;
+            var column = 2;
 
-            var expected = 1;
+            player.SetUserPosition(row, column);
 
-            Assert.AreEqual(expected, (int)player.Position);
+            Assert.AreEqual(2, player.Row);
+            Assert.AreEqual(2, player.Column);
         }
     }
 }
