@@ -24,5 +24,6 @@ namespace TicTacToeGame
             if (player.Position == Token.X) this.Position = Token.O;
             else this.Position = Token.X;
         }
+
     }
 }

@@ -25,7 +25,7 @@ namespace TicTacToeTestLibrary
         }
 
         [Test]
-        public void GivenPlayerX_WhenPlaysMove_ReturnsChangedBoard()
+        public void GivenPlayer_WhenXPlaysMove_ReturnsChangedBoard()
         {
             player.Position = Token.X;
             player.Row = 0;
@@ -39,19 +39,20 @@ namespace TicTacToeTestLibrary
             Assert.AreEqual(expected, currentBoard);
         }
 
-        //[Test]
-        //public void GivenPlayer_WhenValidatingMoveInNewPosition_ReturnsTrueIfValidMove()
-        //{
-        //    player.Position = Token.X;
-        //    player.Row = 0;
-        //    player.Column = 0;
+        [Test]
+        public void GivenPlayer_WhenOPlaysMove_ReturnsChangedBoard()
+        {
+            player.Position = Token.O;
+            player.Row = 1;
+            player.Column = 1;
 
-        //    var currentBoard = new Token[,] { { Token.Empty, Token.Empty, Token.Empty }, { Token.Empty, Token.Empty, Token.Empty }, { Token.Empty, Token.Empty, Token.Empty } };
+            var currentBoard= new Token[,] { { Token.X, Token.Empty, Token.Empty }, { Token.Empty, Token.Empty, Token.Empty }, { Token.Empty, Token.Empty, Token.Empty } };
+            var expected = new Token[,] { { Token.X, Token.Empty, Token.Empty }, { Token.Empty, Token.O, Token.Empty }, { Token.Empty, Token.Empty, Token.Empty } };
 
-        //    var isValid = operations.ValidateMove(player.Position, currentBoard[player.Row,player.Column]);
+            currentBoard = operations.PlayMove(player, currentBoard);
 
-        //    Assert.True(isValid);
-        //}
+            Assert.AreEqual(expected, currentBoard);
+        }
 
         [Test]
         [TestCase(Token.Empty,Token.X,true)]

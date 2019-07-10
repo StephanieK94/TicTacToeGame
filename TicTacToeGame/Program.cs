@@ -10,16 +10,14 @@ namespace TicTacToeGame
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to Tic Tac Toe!\n");
-
             var game = new GameOperations();
             var currentBoard = game.CreateNewGameBoard();
 
-            Console.WriteLine("Here's the current board:\n");
-
             var printer = new Printer();
 
-            printer.PrintBoard(currentBoard);
+            printer.PrintWelcome(currentBoard);
+
+            
         }
     }
 }
