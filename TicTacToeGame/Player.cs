@@ -8,7 +8,7 @@ namespace TicTacToeGame
 {
     public class Player
     {
-        public char Token { get; set; }
+        public Token Position { get; set; }        
         public int Row { get; set; }
         public int Column { get; set; }
     }

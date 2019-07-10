@@ -8,29 +8,26 @@ namespace TicTacToeGame
 {
     public class GameOperations
     {
-        public char[,] CreateNewGameBoard()
+        public Token[,] CreateNewGameBoard()
         {
-            return new char[,] { { '-', '-', '-' }, { '-', '-', '-' }, { '-', '-', '-' } };
+            return new Token[,] { { Token.Empty, Token.Empty, Token.Empty }, { Token.Empty, Token.Empty, Token.Empty } , { Token.Empty, Token.Empty, Token.Empty } };
         }
 
-        public char[,] PlayMove(Player player, char[,] board)
+        public Token[,] PlayMove(Player player, Token[,] board)
         {
-            board[player.Row, player.Column] = player.Token;
+            board[player.Row, player.Column] = player.Position;
             return board;
         }
 
-        public char ChangePlayer(Player player)
+        public Token ChangePlayer(Player player)
         {
-            if (player.Token == 'X')
-            {
-                return 'O';
-            }
-            else return 'X';
+            if (player.Position == Token.X) return Token.O;
+            else return Token.X;
         }
 
-        public bool ValidateMove(Player player, char[,] currentBoard)
+        public bool ValidateMove(Player player, Token[,] currentBoard)
         {
-            if (currentBoard[player.Row, player.Column] == '-')
+            if (currentBoard[player.Row, player.Column] == Token.Empty)
             {
                 return true;
             }

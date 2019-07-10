@@ -4,7 +4,7 @@ namespace TicTacToeGame
 {
     public class Printer
     {
-        public void PrintBoard(char[,] game)
+        public void PrintBoard(Token[,] game)
         {
             for (var row = 0; row < 3; row++)
             {

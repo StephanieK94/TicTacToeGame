@@ -17,26 +17,31 @@ namespace TicTacToeTestLibrary
         [Test]
         public void GivenPlayerX_WhenNextTurn_ReturnPlayerO()
         {
-            player.Token = 'X';
+            player.Position = Token.X;
 
-            player.Token = operations.ChangePlayer(player);
+            player.Position = operations.ChangePlayer(player);
 
-            Assert.AreEqual('O', player.Token);
+            Assert.AreEqual(Token.O, player.Position);
         }
 
         [Test]
         public void GivenPlayerO_WhenChangesTurn_ReturnPlayerX()
         {
-            player.Token = '0';
+            player.Position = Token.O;
 
-            player.Token = operations.ChangePlayer(player);
+            player.Position = operations.ChangePlayer(player);
 
-            Assert.AreEqual('X', player.Token);
+            Assert.AreEqual(Token.X, player.Position);
         }
 
         [Test]
-        public void GivenPlayerSymbol_WhenPrintingValidMove_PrintsPlayerNumber()
+        public void GivenPlayerTokenEnum_WhenPrintingValidMove_PrintsPlayerNumber()
         {
+            player.Position = Token.X;
+
+            var expected = 1;
+
+            Assert.AreEqual(expected, (int)player.Position);
         }
     }
 }

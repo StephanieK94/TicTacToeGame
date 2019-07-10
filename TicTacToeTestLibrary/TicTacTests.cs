@@ -19,7 +19,7 @@ namespace TicTacToeTestLibrary
         public void GivenNewInstanceOfGame_ReturnsGameBoardLayout()
         {
             var newGame = operations.CreateNewGameBoard();
-            var expected = new char[,] { { '-', '-', '-' }, { '-', '-', '-' }, { '-', '-', '-' } };
+            var expected = new Token[,] { { Token.Empty, Token.Empty, Token.Empty }, { Token.Empty, Token.Empty, Token.Empty }, { Token.Empty, Token.Empty, Token.Empty } };
 
             Assert.AreEqual(expected, newGame);
         }
@@ -27,12 +27,12 @@ namespace TicTacToeTestLibrary
         [Test]
         public void GivenPlayerX_WhenPlaysMove_ReturnsChangedBoard()
         {
-            player.Token = 'X';
+            player.Position = Token.X;
             player.Row = 0;
             player.Column = 0;
 
-            var currentBoard = new char[3, 3] { { '-', '-', '-' }, { '-', '-', '-' }, { '-', '-', '-' } };
-            var expected = new char[3, 3] { { 'X', '-', '-' }, { '-', '-', '-' }, { '-', '-', '-' } };
+            var currentBoard = new Token[,] { { Token.Empty, Token.Empty, Token.Empty }, { Token.Empty, Token.Empty, Token.Empty }, { Token.Empty, Token.Empty, Token.Empty } };
+            var expected = new Token[,] { { Token.X, Token.Empty, Token.Empty }, { Token.Empty, Token.Empty, Token.Empty }, { Token.Empty, Token.Empty, Token.Empty } };
 
             currentBoard = operations.PlayMove(player, currentBoard);
 
@@ -42,11 +42,11 @@ namespace TicTacToeTestLibrary
         [Test]
         public void GivenPlayer_WhenValidatingMoveInNewPosition_ReturnsTrueIfValidMove()
         {
-            player.Token = 'X';
+            player.Position = Token.X;
             player.Row = 0;
             player.Column = 0;
 
-            var currentBoard = new char[3, 3] { { '-', '-', '-' }, { '-', '-', '-' }, { '-', '-', '-' } };
+            var currentBoard = new Token[,] { { Token.Empty, Token.Empty, Token.Empty }, { Token.Empty, Token.Empty, Token.Empty }, { Token.Empty, Token.Empty, Token.Empty } };
 
             var isValid = operations.ValidateMove(player, currentBoard);
 
@@ -56,11 +56,11 @@ namespace TicTacToeTestLibrary
         [Test]
         public void GivenPlayer_WhenValidatingMoveInSamePosition_ReturnsFalseIfInvalidMove()
         {
-            player.Token = 'O';
+            player.Position = Token.O;
             player.Row = 0;
             player.Column = 0;
 
-            var currentBoard = new char[3, 3] { { 'X', '-', '-' }, { '-', '-', '-' }, { '-', '-', '-' } };
+            var currentBoard = new Token[,] { { Token.X, Token.Empty, Token.Empty }, { Token.Empty, Token.Empty, Token.Empty }, { Token.Empty, Token.Empty, Token.Empty } };
             var isValid = operations.ValidateMove(player, currentBoard);
 
             Assert.False(isValid);
