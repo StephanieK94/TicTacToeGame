@@ -8,10 +8,12 @@ namespace TicTacToeGame
 {
     public class WinnerCalculator
     {
-        public bool CalculateIfWinner(Token[,] currentBoard)
+        public bool CalculateIfWinner(Player player, Token[,] currentBoard)
         {
-            if (currentBoard[0,0].Equals(currentBoard[1, 0]) && currentBoard[0, 0].Equals(currentBoard[2,0])) return true;
-            if (currentBoard[0,0].Equals(currentBoard[0, 1]) && currentBoard[0, 0].Equals(currentBoard[0,2])) return true;
+            if (player.Position == currentBoard[0,0] && player.Position == currentBoard[0, 1] && player.Position == currentBoard[0,2]) 
+                return true;
+            if (player.Position == currentBoard[0, 0] && player.Position == currentBoard[1,0] && player.Position == currentBoard[2,0])
+                return true;
             else return false;
         }
 

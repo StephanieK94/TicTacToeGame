@@ -41,6 +41,9 @@ namespace TicTacToeGame
                 } while (isValidMove != true);
 
                 printer.PrintAcceptedMove(currentBoard);
+
+                //Check if we won before changing player
+
                 player.ChangePlayer(player.Position); 
             } while (true);
         }

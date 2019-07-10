@@ -16,15 +16,17 @@ namespace TicTacToeTestLibrary
             [Test]
             public void GivenColumn_ReturnWinner()
             {
-                var rowWinner = new Token[,] 
+                var currentBoard = new Token[,] 
                 { 
                     { Token.X, Token.Empty, Token.Empty }, 
                     { Token.X, Token.Empty, Token.Empty }, 
                     { Token.X, Token.Empty, Token.Empty }
                 };
 
+                var player = new Player() { Position = Token.X };
+
                 var winnerCalculator = new WinnerCalculator();
-                var isWinner = winnerCalculator.CalculateIfWinner(rowWinner);
+                var isWinner = winnerCalculator.CalculateIfWinner(player, currentBoard);
 
                 Assert.True(isWinner);
             }
@@ -32,15 +34,17 @@ namespace TicTacToeTestLibrary
             [Test]
             public void GivenRow_ReturnWinner()
             {
-                var colWinner = new Token[,]
+                var currentBoard = new Token[,]
                 {
                     { Token.X, Token.X, Token.X },
                     { Token.Empty, Token.Empty, Token.Empty },
                     { Token.Empty, Token.Empty, Token.Empty }
                 };
 
+                var player = new Player() { Position = Token.X };
+
                 var winnerCalculator = new WinnerCalculator();
-                var isWinner = winnerCalculator.CalculateIfWinner(colWinner);
+                var isWinner = winnerCalculator.CalculateIfWinner(player, currentBoard);
 
                 Assert.True(isWinner);
             }
