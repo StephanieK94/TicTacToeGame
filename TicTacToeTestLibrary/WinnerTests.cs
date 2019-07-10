@@ -85,6 +85,24 @@ namespace TicTacToeTestLibrary
 
                 Assert.True(isWinner);
             }
+
+            [Test]
+            public void GivenDiagonal_ReturnWinner()
+            {
+                var currentBoard = new Token[,]
+                {
+                    { Token.X, Token.Empty, Token.Empty },
+                    { Token.Empty, Token.X, Token.Empty },
+                    { Token.Empty, Token.Empty, Token.X }
+                };
+
+                var player = new Player() { Position = Token.X };
+
+                var winnerCalculator = new WinnerCalculator();
+                var isWinner = winnerCalculator.IsRowWinner(player, currentBoard);
+
+                Assert.True(isWinner);
+            }
         }
     }
 }
