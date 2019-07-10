@@ -25,8 +25,11 @@ namespace TicTacToeGame
             return false;
         }
 
-        public int[] ConvertUserInput()
+        public int[] GetUserInput(Token player)
         {
+            var printer = new Printer();
+            printer.PrintPromptForMove(player);
+
             var input = Console.ReadLine().Split(',');
             return new int[] { Convert.ToInt32(input[0])-1, Convert.ToInt32(input[1])-1 };
         }

@@ -25,9 +25,9 @@ namespace TicTacToeGame
             }
         }
 
-        public void PrintPromptForMove(Player player)
+        public void PrintPromptForMove(Token player)
         {
-            Console.WriteLine($"Player {0} enter a coord x,y to place your {1} or enter 'q' to give up: ", (int)player.Position, player.Position);
+            Console.WriteLine($"Player {0} enter a coord x,y to place your {1} or enter 'q' to give up: ", (int)player, player);
 
         }
 
