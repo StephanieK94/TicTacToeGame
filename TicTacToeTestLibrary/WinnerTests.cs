@@ -99,7 +99,7 @@ namespace TicTacToeTestLibrary
                 var player = new Player() { Position = Token.X };
 
                 var winnerCalculator = new WinnerCalculator();
-                var isWinner = winnerCalculator.IsRowWinner(player, currentBoard);
+                var isWinner = winnerCalculator.IsDiagonlWinner(player, currentBoard);
 
                 Assert.True(isWinner);
             }

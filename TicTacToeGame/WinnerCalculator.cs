@@ -10,11 +10,8 @@ namespace TicTacToeGame
     {
         public bool CalculateIfWinner(Player player, Token[,] currentBoard)
         {
-            if (player.Position == currentBoard[0,0] && player.Position == currentBoard[0, 1] && player.Position == currentBoard[0,2]) 
-                return true;
-            if (player.Position == currentBoard[0, 0] && player.Position == currentBoard[1,0] && player.Position == currentBoard[2,0])
-                return true;
-            else return false;
+            if (IsRowWinner(player, currentBoard) == false && IsColumnWinner(player, currentBoard) == false && IsDiagonlWinner(player, currentBoard) == false) return false;
+            return true;
         }
 
         public bool IsRowWinner(Player player, Token[,] currentBoard)
@@ -34,6 +31,14 @@ namespace TicTacToeGame
                 if (player.Position == currentBoard[0,col] && player.Position == currentBoard[1,col] && player.Position == currentBoard[2,col])
                     return true;
             }
+            return false;
+        }
+
+        public bool IsDiagonlWinner(Player player, Token[,] currentBoard)
+        {
+            if ((player.Position == currentBoard[0,0] && player.Position == currentBoard[1,1] && player.Position == currentBoard[2,2] )
+                ||(player.Position == currentBoard[0,2] && player.Position == currentBoard[1,1] && player.Position == currentBoard[0,2]))
+                return true;
             return false;
         }
     }
