@@ -19,7 +19,7 @@ namespace TicTacToeTestLibrary
         {
             player.Position = Token.X;
 
-            player.Position = operations.ChangePlayer(player);
+            player.ChangePlayer(player);
 
             Assert.AreEqual(Token.O, player.Position);
         }
@@ -29,7 +29,7 @@ namespace TicTacToeTestLibrary
         {
             player.Position = Token.O;
 
-            player.Position = operations.ChangePlayer(player);
+            player.ChangePlayer(player);
 
             Assert.AreEqual(Token.X, player.Position);
         }

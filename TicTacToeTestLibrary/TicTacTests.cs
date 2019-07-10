@@ -66,7 +66,16 @@ namespace TicTacToeTestLibrary
             Assert.False(isValid);
         }
 
-        //[Test]
-        //public void Given
+        [Test]
+        public void GivenInputForPosition_ReturnSetPositionForPlayer()
+        {
+            var row = 2;
+            var column = 2;
+
+            player.SetUserPosition(row, column);
+
+            Assert.AreEqual(2, player.Row);
+            Assert.AreEqual(2, player.Column);
+        }
     }
 }
