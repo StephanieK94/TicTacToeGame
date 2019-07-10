@@ -19,9 +19,9 @@ namespace TicTacToeGame
             this.Column = userMoves[1];
         }
 
-        public void ChangePlayer(Player player)
+        public void ChangePlayer(Token playerPosition)
         {
-            if (player.Position == Token.X) this.Position = Token.O;
+            if (playerPosition == Token.X) this.Position = Token.O;
             else this.Position = Token.X;
         }
     }

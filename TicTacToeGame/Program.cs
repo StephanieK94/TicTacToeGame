@@ -15,21 +15,34 @@ namespace TicTacToeGame
 
             var printer = new Printer();
 
-            printer.PrintWelcome(currentBoard);
-
-            var player = new Player();
-            player.Position = Token.X;
-
-            var newUserMove = new int[] { };
-            var isValidMove = false;
             do
             {
-                newUserMove = game.GetUserInput(player.Position);
-                isValidMove = game.ValidateMove(newUserMove);
-            } while (isValidMove != true);
+                printer.PrintWelcome(currentBoard);
 
-            player.SetUserPosition(newUserMove);
+                var player = new Player();
+                player.Position = Token.X;
 
+                var isValidMove = false;
+
+                do
+                {
+                    printer.PrintPromptForMove(player);
+
+                    var newUserMove = game.GetUserInput();
+                    isValidMove = game.ValidateMove(newUserMove);
+
+                    if (isValidMove == true)
+                    {
+                        player.SetUserPosition(newUserMove);
+                        currentBoard = game.PlayMove(player, currentBoard);
+                    }
+                    else if (isValidMove == false) printer.PrintInvalidMoveErrorMessage();
+
+                } while (isValidMove != true);
+
+                printer.PrintAcceptedMove(currentBoard);
+                player.ChangePlayer(player.Position); 
+            } while (true);
         }
     }
 }

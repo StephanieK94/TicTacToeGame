@@ -50,6 +50,7 @@
     <Compile Include="PlayerTests.cs" />
     <Compile Include="TicTacTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WinnerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TicTacToeGame\TicTacToeGame.csproj">

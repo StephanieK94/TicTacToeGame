@@ -75,16 +75,15 @@ namespace TicTacToeTestLibrary
         }
         
         [Test]
+        [TestCase(0, 0, true)]
         [TestCase(1,1,true)]
-        [TestCase(1,1,true)]
-        [TestCase(3,3,true)]
-        [TestCase(0,0,false)]
+        [TestCase(2,2,true)]
+        [TestCase(3,3,false)]
         [TestCase(-1,1,false)]
-        [TestCase(1,0,false)]
         [TestCase(4,0,false)]
-        public void GivenMoves_WhenValidated_ReturnsValid(int row, int column, bool expectedValidity)
+        public void GivenConvertedMoves_WhenValidated_ReturnsValid(int row, int column, bool expectedValidity)
         {
-            var moves = new int[] {row,column };
+            var moves = new int[] {row,column};
 
             var actualValidity = operations.ValidateMove(moves);
 
@@ -109,6 +108,28 @@ namespace TicTacToeTestLibrary
             var actualValidity = operations.ValidateMove(moves);
 
             Assert.AreEqual(false, actualValidity);
+        }
+
+        [Test]
+        public void GivenToken_ReturnTokenAndIntOfToken()
+        {
+            var symbol = Token.X;
+            var number = (int)Token.X;
+
+            Assert.AreEqual(Token.X, symbol);
+            Assert.AreEqual(1, number);
+        }
+
+        [Test]
+        public void GivenToken_ReturnStringWithTokenAndIntOfToken()
+        {
+            var symbol = Token.X;
+            var number = (int)Token.X;
+
+            var expected = "Token: X, Player Number: 1";
+            var actual = $"Token: {symbol}, Player Number: {number}";
+
+            Assert.AreEqual(expected, actual);
         }
     }
 }

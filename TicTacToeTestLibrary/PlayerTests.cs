@@ -19,9 +19,7 @@ namespace TicTacToeTestLibrary
         [TestCase(Token.O,Token.X)]
         public void GivenPlayer_WhenNextTurn_ReturnsOtherPlayer(Token player1, Token player2)
         {
-            player.Position = player1;
-
-            player.ChangePlayer(player);
+            player.ChangePlayer(player1);
 
             Assert.AreEqual(player2, player.Position);
         }

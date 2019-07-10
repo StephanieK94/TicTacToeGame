@@ -19,16 +19,15 @@ namespace TicTacToeGame
                 for (var column = 0; column < 3; column++)
                 {
                     if (game[row, column] == Token.Empty) Console.Write(" * ");
-                    else Console.Write($" {0} " , game[row, column]);
+                    else Console.Write($" {game[row, column]} ");
                 }
                 Console.WriteLine();
             }
         }
 
-        public void PrintPromptForMove(Token player)
+        public void PrintPromptForMove(Player player)
         {
-            Console.WriteLine($"Player {0} enter a coord x,y to place your {1} or enter 'q' to give up: ", (int)player, player);
-
+            Console.WriteLine($"Player {(int)player.Position} enter a coord x,y to place your {player.Position}: ");
         }
 
         public void PrintAcceptedMove(Token[,] currentBoard)
