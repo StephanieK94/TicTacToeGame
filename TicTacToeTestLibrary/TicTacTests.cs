@@ -39,33 +39,38 @@ namespace TicTacToeTestLibrary
             Assert.AreEqual(expected, currentBoard);
         }
 
+        //[Test]
+        //public void GivenPlayer_WhenValidatingMoveInNewPosition_ReturnsTrueIfValidMove()
+        //{
+        //    player.Position = Token.X;
+        //    player.Row = 0;
+        //    player.Column = 0;
+
+        //    var currentBoard = new Token[,] { { Token.Empty, Token.Empty, Token.Empty }, { Token.Empty, Token.Empty, Token.Empty }, { Token.Empty, Token.Empty, Token.Empty } };
+
+        //    var isValid = operations.ValidateMove(player.Position, currentBoard[player.Row,player.Column]);
+
+        //    Assert.True(isValid);
+        //}
+
         [Test]
-        public void GivenPlayer_WhenValidatingMoveInNewPosition_ReturnsTrueIfValidMove()
+        [TestCase(Token.Empty,Token.X,true)]
+        [TestCase(Token.Empty, Token.O, true)]
+        public void GivenToken_WhenPlayerMoves_ReturnTrueForValidMove(Token chosenPosition, Token player, bool isValid)
         {
-            player.Position = Token.X;
-            player.Row = 0;
-            player.Column = 0;
-
-            var currentBoard = new Token[,] { { Token.Empty, Token.Empty, Token.Empty }, { Token.Empty, Token.Empty, Token.Empty }, { Token.Empty, Token.Empty, Token.Empty } };
-
-            var isValid = operations.ValidateMove(player, currentBoard);
+            isValid = operations.ValidateMove(player, chosenPosition);
 
             Assert.True(isValid);
         }
 
         [Test]
-        public void GivenPlayer_WhenValidatingMoveInSamePosition_ReturnsFalseIfInvalidMove()
+        [TestCase(Token.O, Token.X, false)]
+        [TestCase(Token.X, Token.O, false)]
+        public void GivenToken_WhenPlayerMoves_ReturnFalseForInvalidMove(Token chosenPosition, Token player, bool isValid)
         {
-            player.Position = Token.O;
-            player.Row = 0;
-            player.Column = 0;
-
-            var currentBoard = new Token[,] { { Token.X, Token.Empty, Token.Empty }, { Token.Empty, Token.Empty, Token.Empty }, { Token.Empty, Token.Empty, Token.Empty } };
-            var isValid = operations.ValidateMove(player, currentBoard);
+            isValid = operations.ValidateMove(player, chosenPosition);
 
             Assert.False(isValid);
         }
-
-
     }
 }

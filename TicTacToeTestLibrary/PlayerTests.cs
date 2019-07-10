@@ -15,35 +15,27 @@ namespace TicTacToeTestLibrary
         private Player player = new Player();
         
         [Test]
-        public void GivenPlayerX_WhenNextTurn_ReturnPlayerO()
+        [TestCase(Token.X,Token.O)]
+        [TestCase(Token.O,Token.X)]
+        public void GivenPlayer_WhenNextTurn_ReturnsOtherPlayer(Token player1, Token player2)
         {
-            player.Position = Token.X;
+            player.Position = player1;
 
             player.ChangePlayer(player);
 
-            Assert.AreEqual(Token.O, player.Position);
+            Assert.AreEqual(player2, player.Position);
         }
 
         [Test]
-        public void GivenPlayerO_WhenChangesTurn_ReturnPlayerX()
+        [TestCase(0,0)]
+        [TestCase(1,1)]
+        [TestCase(2,2)]
+        public void GivenInputForPosition_ReturnSetPositionForPlayer(int row, int column)
         {
-            player.Position = Token.O;
-
-            player.ChangePlayer(player);
-
-            Assert.AreEqual(Token.X, player.Position);
-        }
-
-        [Test]
-        public void GivenInputForPosition_ReturnSetPositionForPlayer()
-        {
-            var row = 2;
-            var column = 2;
-
             player.SetUserPosition(row, column);
 
-            Assert.AreEqual(2, player.Row);
-            Assert.AreEqual(2, player.Column);
+            Assert.AreEqual(row, player.Row);
+            Assert.AreEqual(column, player.Column);
         }
     }
 }

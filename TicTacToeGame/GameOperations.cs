@@ -19,12 +19,9 @@ namespace TicTacToeGame
             return board;
         }
 
-        public bool ValidateMove(Player player, Token[,] currentBoard)
+        public bool ValidateMove(Token player, Token chosenPosition)
         {
-            if (currentBoard[player.Row, player.Column] == Token.Empty)
-            {
-                return true;
-            }
+            if (chosenPosition == Token.Empty) return true;
             return false;
         }
     }
