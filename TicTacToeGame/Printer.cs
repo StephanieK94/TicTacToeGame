@@ -10,7 +10,8 @@ namespace TicTacToeGame
             {
                 for (var column = 0; column < 3; column++)
                 {
-                    Console.Write(game[row, column]);
+                    if (game[row, column] == Token.Empty) Console.Write(" - ");
+                    else Console.Write($" {0} " , game[row, column]);
                 }
                 Console.WriteLine();
             }
