@@ -11,67 +11,36 @@ namespace TicTacToeTestLibrary
     [TestFixture]
     public class TicTacTests
     {
-        private GameBoard game = new TicTacToeGame.GameBoard();
         private GameOperations operations = new GameOperations();
         private Player player = new Player();
 
+
         [Test]
-        public void GivenNewInstanceOfGame_ReturnsEmptyCharArray()
+        public void GivenNewInstanceOfGame_ReturnsGameBoardLayout()
         {
-            var newGame = game.CreateNewGameBoard();
-            char[,] expected = new char[3, 3] { { '-', '-', '-' }, { '-', '-', '-' }, { '-', '-', '-' } };
+            var newGame = operations.CreateNewGameBoard();
+            var expected = new char[,] { { '-', '-', '-' }, { '-', '-', '-' }, { '-', '-', '-' } };
 
             Assert.AreEqual(expected, newGame);
         }
 
         [Test]
-        public void GivenNewGame_ReturnsGameBoardLayout()
-        {
-            var currentBoard = game.CreateNewGameBoard();
-
-            var expected = new char[3, 3] { {'-','-','-' }, { '-', '-', '-' }, { '-', '-', '-' } };
-
-            Assert.AreEqual(expected, currentBoard);
-        }
-
-        [Test]
-        public void GivenPlayerX_WhenNextTurn_ReturnPlayerO()
-        {
-            var player = 'X';
-
-            player = operations.ChangePlayer(player);
-
-            Assert.AreEqual('O', player);
-        }
-
-        [Test]
-        public void GivenPlayerO_WhenNextTurn_ReturnPlayerX()
-        {
-            var player = 'O';
-
-            player = operations.ChangePlayer(player);
-
-            Assert.AreEqual('X', player);
-        }
-
-        [Test]
-        public void GivenPlayer_WhenPlaysMove_ReturnsBoard()
+        public void GivenPlayerX_WhenPlaysMove_ReturnsChangedBoard()
         {
             player.Token = 'X';
             player.Row = 0;
             player.Column = 0;
 
-            var currentBoard = game.CreateNewGameBoard();
+            var currentBoard = new char[3, 3] { { '-', '-', '-' }, { '-', '-', '-' }, { '-', '-', '-' } };
+            var expected = new char[3, 3] { { 'X', '-', '-' }, { '-', '-', '-' }, { '-', '-', '-' } };
 
             currentBoard = operations.PlayMove(player, currentBoard);
-
-            var expected = new char[3, 3] { { 'X', '-', '-' }, { '-', '-', '-' }, { '-', '-', '-' } };
 
             Assert.AreEqual(expected, currentBoard);
         }
 
         [Test]
-        public void GivenPlayer_WhenValidatingMoveInNewPosition_ReturnsTrueForMove()
+        public void GivenPlayer_WhenValidatingMoveInNewPosition_ReturnsTrueIfValidMove()
         {
             player.Token = 'X';
             player.Row = 0;
