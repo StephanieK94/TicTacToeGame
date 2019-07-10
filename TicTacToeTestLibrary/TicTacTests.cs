@@ -81,7 +81,7 @@ namespace TicTacToeTestLibrary
         [TestCase(3,3,false)]
         [TestCase(-1,1,false)]
         [TestCase(4,0,false)]
-        public void GivenConvertedMoves_WhenValidated_ReturnsValid(int row, int column, bool expectedValidity)
+        public void GivenConvertedMoves_WhenValidated_ReturnsIfValid(int row, int column, bool expectedValidity)
         {
             var moves = new int[] {row,column};
 

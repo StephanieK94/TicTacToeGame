@@ -103,6 +103,24 @@ namespace TicTacToeTestLibrary
 
                 Assert.True(isWinner);
             }
+
+            [Test]
+            public void GivenColumnFullBoard_ReturnWinnerIsFalse()
+            {
+                var currentBoard = new Token[,]
+                {
+                    { Token.X, Token.X, Token.O },
+                    { Token.O, Token.O, Token.X},
+                    { Token.X, Token.O, Token.X }
+                };
+
+                var player = new Player() { Position = Token.X };
+
+                var winnerCalculator = new WinnerCalculator();
+                var isWinner = winnerCalculator.CalculateIfWinner(player, currentBoard);
+
+                Assert.AreEqual(false, isWinner);
+            }
         }
     }
 }

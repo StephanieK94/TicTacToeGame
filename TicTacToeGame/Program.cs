@@ -19,33 +19,41 @@ namespace TicTacToeGame
             var gameEnd = false;
             var turnCount = 0;
 
-
-
             printer.PrintWelcome(currentBoard);
+
             var player = new Player();
-            player.Position = Token.X;
+            player.Position = Token.O;
 
             do
             {
                 player.ChangePlayer(player.Position);
 
                 var isValidMove = false;
+                var isValidPosition = false;
 
                 do
                 {
                     printer.PrintPromptForMove(player);
 
                     var newUserMove = game.GetUserInput();
+
                     isValidMove = game.ValidateMove(newUserMove);
+
+                    
 
                     if (isValidMove == true)
                     {
                         player.SetUserPosition(newUserMove);
-                        currentBoard = game.PlayMove(player, currentBoard);
-                    }
-                    else if (isValidMove == false) printer.PrintInvalidMoveErrorMessage();
 
-                } while (isValidMove != true);
+                        isValidPosition = game.ValidatePosition(player.Position, currentBoard[player.Row, player.Column]);
+
+                        if (isValidPosition == true)
+                        {
+                            currentBoard = game.PlayMove(player, currentBoard);
+                        }
+                    }
+
+                } while (isValidMove != true || isValidPosition != true);
 
                 printer.PrintAcceptedMove(currentBoard);
 
@@ -55,7 +63,7 @@ namespace TicTacToeGame
             } while (gameEnd != true && turnCount != 9);
 
             // Game ends, declare winner or if draw
-            if (gameEnd == true) printer.PrintDraw();
+            if (gameEnd == false) printer.PrintDraw();
             else printer.PrintWinner(player);
         }
     }

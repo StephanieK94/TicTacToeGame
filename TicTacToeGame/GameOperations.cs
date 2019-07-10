@@ -8,9 +8,16 @@ namespace TicTacToeGame
 {
     public class GameOperations
     {
+        public Printer printer = new Printer();
+
         public Token[,] CreateNewGameBoard()
         {
-            return new Token[,] { { Token.Empty, Token.Empty, Token.Empty }, { Token.Empty, Token.Empty, Token.Empty }, { Token.Empty, Token.Empty, Token.Empty } };
+            return new Token[,] 
+            { 
+                { Token.Empty, Token.Empty, Token.Empty }, 
+                { Token.Empty, Token.Empty, Token.Empty }, 
+                { Token.Empty, Token.Empty, Token.Empty }
+            };
         }
 
         public Token[,] PlayMove(Player player, Token[,] board)
@@ -21,8 +28,10 @@ namespace TicTacToeGame
 
         public bool ValidatePosition(Token player, Token chosenPosition)
         {
-            if (chosenPosition == Token.Empty) return true;
-            return false;
+            if (chosenPosition == Token.Empty)
+                return true;
+            else printer.PrintInvalidMoveErrorMessage();
+                return false;
         }
 
         public int[] GetUserInput()
@@ -35,8 +44,11 @@ namespace TicTacToeGame
 
         public bool ValidateMove(int[] moves)
         {
-            if (moves.Length <= 0 || moves.Length > 2) return false;
-            if (moves[0] < 0 || moves[0] > 2 || moves[1] < 0 || moves[1] > 2) return false;
+            if ((moves.Length <= 0 || moves.Length > 2) || (moves[0] < 0 || moves[0] > 2 || moves[1] < 0 || moves[1] > 2))
+            {
+                printer.PrintInvalidRangeErrorMessage();
+                return false;
+            }
             return true;
         }
 
@@ -44,7 +56,7 @@ namespace TicTacToeGame
         {
             foreach(var input in userInput)
             {
-                if (input == "q".ToUpper()) return true;
+                if (input == "q" || input == "Q") return true;
             }
             return false;
         }

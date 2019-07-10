@@ -19,7 +19,7 @@ namespace TicTacToeGame
         {
             for(var row =0; row<=2; row++)
             {
-                if (player.Position == currentBoard[row, 0] && player.Position == currentBoard[row, 1] && player.Position == currentBoard[row, 2])
+                if (currentBoard[row, 0] == player.Position && currentBoard[row, 1] == player.Position &&currentBoard[row, 2] == player.Position)
                     return true;
             }
             return false;
@@ -29,7 +29,7 @@ namespace TicTacToeGame
         {
             for (var col = 0; col <= 2; col++)
             {
-                if (player.Position == currentBoard[0,col] && player.Position == currentBoard[1,col] && player.Position == currentBoard[2,col])
+                if (currentBoard[0,col] == player.Position && currentBoard[1,col] == player.Position && currentBoard[2,col] == player.Position)
                     return true;
             }
             return false;
@@ -37,10 +37,11 @@ namespace TicTacToeGame
 
         public bool IsDiagonlWinner(Player player, Token[,] currentBoard)
         {
-            if ((player.Position == currentBoard[0,0] && player.Position == currentBoard[1,1] && player.Position == currentBoard[2,2] )
-                ||(player.Position == currentBoard[0,2] && player.Position == currentBoard[1,1] && player.Position == currentBoard[0,2]))
+            if ((currentBoard[0,0] == player.Position &&  currentBoard[1,1] == player.Position &&currentBoard[2,2] == player.Position) || (currentBoard[0,2] == player.Position && currentBoard[1,1] == player.Position && currentBoard[2,0] == player.Position)) 
+            {
                 return true;
-            return false;
+            }
+            else return false;
         }
     }
 }
