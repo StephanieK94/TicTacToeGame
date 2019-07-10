@@ -59,7 +59,7 @@ namespace TicTacToeTestLibrary
         [TestCase(Token.Empty, Token.O, true)]
         public void GivenToken_WhenPlayerMoves_ReturnTrueForValidMove(Token chosenPosition, Token player, bool isValid)
         {
-            isValid = operations.ValidateMove(player, chosenPosition);
+            isValid = operations.ValidatePosition(player, chosenPosition);
 
             Assert.True(isValid);
         }
@@ -69,10 +69,46 @@ namespace TicTacToeTestLibrary
         [TestCase(Token.X, Token.O, false)]
         public void GivenToken_WhenPlayerMoves_ReturnFalseForInvalidMove(Token chosenPosition, Token player, bool isValid)
         {
-            isValid = operations.ValidateMove(player, chosenPosition);
+            isValid = operations.ValidatePosition(player, chosenPosition);
 
             Assert.False(isValid);
         }
         
+        [Test]
+        [TestCase(1,1,true)]
+        [TestCase(1,1,true)]
+        [TestCase(3,3,true)]
+        [TestCase(0,0,false)]
+        [TestCase(-1,1,false)]
+        [TestCase(1,0,false)]
+        [TestCase(4,0,false)]
+        public void GivenMoves_WhenValidated_ReturnsValid(int row, int column, bool expectedValidity)
+        {
+            var moves = new int[] {row,column };
+
+            var actualValidity = operations.ValidateMove(moves);
+
+            Assert.AreEqual(expectedValidity, actualValidity);
+        }
+
+        [Test]
+        public void GivenEmptyMoves_WhenValidated_ReturnsInvalid()
+        {
+            var moves = new int[] { };
+
+            var actualValidity = operations.ValidateMove(moves);
+
+            Assert.AreEqual(false, actualValidity);
+        }
+
+        [Test]
+        public void GivenTooManyMoves_WhenValidated_ReturnsInvalid()
+        {
+            var moves = new int[] {1,1,1 };
+
+            var actualValidity = operations.ValidateMove(moves);
+
+            Assert.AreEqual(false, actualValidity);
+        }
     }
 }

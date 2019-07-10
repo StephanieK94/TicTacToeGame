@@ -20,8 +20,8 @@ namespace TicTacToeGame
             var player = new Player();
             player.Position = Token.X;
 
-            player.GetUserInput();
-            player.SetUserPosition(player.Row, player.Column);
+            var newUserMoves = game.ConvertUserInput();
+            player.SetUserPosition(newUserMoves);
         }
     }
 }

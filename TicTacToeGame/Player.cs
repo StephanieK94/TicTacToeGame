@@ -13,23 +13,16 @@ namespace TicTacToeGame
         public int Column { get; set; }
 
 
-        public void SetUserPosition(int userRow, int userColumn)
+        public void SetUserPosition(int[] userMoves)
         {
-            this.Row = userRow;
-            this.Column = userColumn;
+            this.Row = userMoves[0];
+            this.Column = userMoves[1];
         }
 
         public void ChangePlayer(Player player)
         {
             if (player.Position == Token.X) this.Position = Token.O;
             else this.Position = Token.X;
-        }
-
-        public void GetUserInput()
-        {
-            this.Row = 0;
-            this.Column = 1;
-
         }
     }
 }

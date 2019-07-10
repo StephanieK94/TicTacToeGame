@@ -32,21 +32,13 @@ namespace TicTacToeTestLibrary
         [TestCase(2,2)]
         public void GivenInputForPosition_ReturnSetPositionForPlayer(int row, int column)
         {
-            player.SetUserPosition(row, column);
+            var moves = new int[] { row, column };
+            player.SetUserPosition(moves);
 
             Assert.AreEqual(row, player.Row);
             Assert.AreEqual(column, player.Column);
         }
 
-        [Test]
-        public void WhenUserInputGiven_ReturnSetPosition()
-        {
-            GameOperations gameOperator = new GameOperations();
-            player.Position = Token.X;
-            player.GetUserInput();
 
-            Assert.AreEqual(0, player.Row);
-            Assert.AreEqual(1, player.Column);
-        }
     }
 }
