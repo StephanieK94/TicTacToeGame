@@ -10,7 +10,8 @@ namespace TicTacToeGame
     {
         public bool CalculateIfWinner(Player player, Token[,] currentBoard)
         {
-            if (IsRowWinner(player, currentBoard) == false && IsColumnWinner(player, currentBoard) == false && IsDiagonlWinner(player, currentBoard) == false) return false;
+            if (IsRowWinner(player, currentBoard) == false && IsColumnWinner(player, currentBoard) == false 
+                && IsDiagonlWinner(player, currentBoard) == false) return false;
             return true;
         }
 

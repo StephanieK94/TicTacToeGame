@@ -13,15 +13,21 @@ namespace TicTacToeGame
             var game = new GameOperations();
             var currentBoard = game.CreateNewGameBoard();
 
+            var winnerCalculator = new WinnerCalculator();
+
             var printer = new Printer();
             var gameEnd = false;
+            var turnCount = 0;
+
+
+
+            printer.PrintWelcome(currentBoard);
+            var player = new Player();
+            player.Position = Token.X;
 
             do
             {
-                printer.PrintWelcome(currentBoard);
-
-                var player = new Player();
-                player.Position = Token.X;
+                player.ChangePlayer(player.Position);
 
                 var isValidMove = false;
 
@@ -43,14 +49,14 @@ namespace TicTacToeGame
 
                 printer.PrintAcceptedMove(currentBoard);
 
-                //Check if we won before changing player
+                gameEnd = winnerCalculator.CalculateIfWinner(player, currentBoard);
+                turnCount++;
 
-                player.ChangePlayer(player.Position); 
-
-
-            } while (gameEnd != true);
+            } while (gameEnd != true && turnCount != 9);
 
             // Game ends, declare winner or if draw
+            if (gameEnd == true) printer.PrintDraw();
+            else printer.PrintWinner(player);
         }
     }
 }

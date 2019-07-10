@@ -46,5 +46,15 @@ namespace TicTacToeGame
         {
             Console.WriteLine("Oh no, a piece is already in this place! Try again...\n");
         }
+
+        public void PrintWinner(Player player)
+        {
+            Console.WriteLine($"Well done {player.Position}, you won the game!\n");
+        }
+
+        public void PrintDraw()
+        {
+            Console.WriteLine("It was a Draw! Better luck next time. \n");
+        }
     }
 }
