@@ -8,7 +8,34 @@ namespace TicTacToeGame
 {
     public class WinnerCalculator
     {
-        public bool CalculateIfWinner(Player player, Token[,] currentBoard)
+        public bool WinRow { get; set; }
+        public bool WinColumn { get; set; }
+        public bool WinDiagonal { get; set; }
+        public bool WinRevDiagonal { get; set; }
+
+        public bool IsWinner{get;set;}
+
+        public WinnerCalculator( Player player, Token[,] board )
+        {
+            WinRow = true;
+            WinColumn = true;
+            WinDiagonal = true;
+            WinRevDiagonal = true;
+            IsWinner = false;
+
+            for(var i = 0; i <= 2; i++)
+            {
+                if(board[player.Row, i] != player.Position) WinRow = false;
+                if(board[i, player.Column] != player.Position) WinColumn = false;
+                if(board[i, i] != player.Position) WinDiagonal = false;
+                if(board[i, (3 - 1 - i)] != player.Position) WinRevDiagonal = false;
+            }
+
+            IsWinner = (WinRow || WinColumn || WinDiagonal || WinRevDiagonal);
+        }
+
+
+        /*public bool CalculateIfWinner(Player player, Token[,] currentBoard)
         {
             if (IsRowWinner(player, currentBoard) == false && IsColumnWinner(player, currentBoard) == false 
                 && IsDiagonlWinner(player, currentBoard) == false) return false;
@@ -42,6 +69,6 @@ namespace TicTacToeGame
                 return true;
             }
             else return false;
-        }
+        }*/
     }
 }

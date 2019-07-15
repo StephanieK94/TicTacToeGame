@@ -13,7 +13,6 @@ namespace TicTacToeGame
             var game = new GameOperations();
             var currentBoard = game.CreateNewGameBoard();
 
-            var winnerCalculator = new WinnerCalculator();
 
             var printer = new Printer();
             var gameEnd = false;
@@ -23,6 +22,8 @@ namespace TicTacToeGame
 
             var player = new Player();
             player.Position = Token.O;
+
+
 
             do
             {
@@ -57,7 +58,10 @@ namespace TicTacToeGame
 
                 printer.PrintAcceptedMove(currentBoard);
 
-                gameEnd = winnerCalculator.CalculateIfWinner(player, currentBoard);
+                var winnerCalculator = new WinnerCalculator(player, currentBoard);
+                if (winnerCalculator.IsWinner == true) gameEnd = true;
+
+                //gameEnd = winnerCalculator.CalculateIfWinner(player, currentBoard);
                 turnCount++;
 
             } while (gameEnd != true && turnCount != 9);
