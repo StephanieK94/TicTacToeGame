@@ -13,8 +13,6 @@ namespace TicTacToeTestLibrary
         [TestFixture]
         public class WinningTests
         {
-            //private WinnerCalculator winnerCalculator = new WinnerCalculator();
-
             [Test]
             public void GivenColumnWin_ReturnWinnerTrue()
             {

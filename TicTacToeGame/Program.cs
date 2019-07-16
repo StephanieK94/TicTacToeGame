@@ -33,27 +33,37 @@ namespace TicTacToeGame
                 {
                     printer.PrintPromptForMove(player);
 
-                    var newUserMove = game.GetUserInput();
+                    var userInput = Console.ReadLine();
 
-                    isValidMove = game.ValidateMove(newUserMove);
-
-                    
-
-                    if (isValidMove == true)
+                    if(game.CheckForForfeit(userInput) == true)
                     {
-                        player.SetUserPosition(newUserMove);
+                        playerHasWon = true;
+                        isValidMove = true;
+                        isValidPosition = true;
 
-                        isValidPosition = game.ValidatePosition(player.Symbol, currentBoard[player.Row, player.Column]);
+                        player.ChangePlayer(player);
+                    }
+                    else
+                    {
+                        var newMove = game.ConvertUserInput(userInput);
 
-                        if (isValidPosition == true)
+                        isValidMove = game.ValidateMove(newMove);
+
+                        if (isValidMove == true)
                         {
-                            currentBoard = game.PlayMove(player, currentBoard);
+                            player.SetUserPosition(newMove);
+
+                            isValidPosition = game.ValidatePosition(player.Symbol, currentBoard[player.Row, player.Column]);
+
+                            if (isValidPosition == true)
+                            {
+                                currentBoard = game.PlayMove(player, currentBoard);
+
+                                printer.PrintAcceptedMove(currentBoard);
+                            }
                         }
                     }
-
                 } while (isValidMove != true || isValidPosition != true);
-
-                printer.PrintAcceptedMove(currentBoard);
 
                 var winnerCalculator = new WinnerCalculator(player, currentBoard);
                 if (winnerCalculator.IsWinner == true) playerHasWon = true;

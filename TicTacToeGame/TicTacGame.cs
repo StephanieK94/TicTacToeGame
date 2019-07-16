@@ -35,10 +35,9 @@ namespace TicTacToeGame
                 return false;
         }
 
-        public int[] GetUserInput()
+        public int[] ConvertUserInput(string userString)
         {
-            var input = Console.ReadLine().Split(',');
-            if (CheckForForfeit(input) == true) EndGame();
+            var input = userString.Split(',');
 
             return new int[] { Convert.ToInt32(input[0])-1, Convert.ToInt32(input[1])-1 };
         }
@@ -53,17 +52,10 @@ namespace TicTacToeGame
             return true;
         }
 
-        public bool CheckForForfeit(string[] userInput)
+        public bool CheckForForfeit(string userInput)
         {
-            foreach(var input in userInput)
-            {
-                if (input == "q" || input == "Q") return true;
-            }
+            if (userInput == "q".ToLower()) return true;
             return false;
-        }
-        public void EndGame()
-        {
-            Environment.Exit(0);
         }
     }
 }
