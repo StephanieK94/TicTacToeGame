@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TicTacToeGame
 {
-    public enum Token
+    public enum Piece
     {
         Empty = 0,
         X = 1,

@@ -15,7 +15,7 @@ namespace TicTacToeGame
 
         public bool IsWinner{get;set;}
 
-        public WinnerCalculator( Player player, Token[,] board )
+        public WinnerCalculator( Player player, Piece[,] board )
         {
             WinRow = true;
             WinColumn = true;
@@ -25,10 +25,10 @@ namespace TicTacToeGame
 
             for(var i = 0; i <= 2; i++)
             {
-                if(board[player.Row, i] != player.Position) WinRow = false;
-                if(board[i, player.Column] != player.Position) WinColumn = false;
-                if(board[i, i] != player.Position) WinDiagonal = false;
-                if(board[i, (3 - 1 - i)] != player.Position) WinRevDiagonal = false;
+                if(board[player.Row, i] != player.Symbol) WinRow = false;
+                if(board[i, player.Column] != player.Symbol) WinColumn = false;
+                if(board[i, i] != player.Symbol) WinDiagonal = false;
+                if(board[i, (3 - 1 - i)] != player.Symbol) WinRevDiagonal = false;
             }
 
             IsWinner = (WinRow || WinColumn || WinDiagonal || WinRevDiagonal);

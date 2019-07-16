@@ -18,14 +18,14 @@ namespace TicTacToeTestLibrary
             [Test]
             public void GivenColumnWin_ReturnWinnerTrue()
             {
-                var currentBoard = new Token[,] 
+                var currentBoard = new Piece[,] 
                 { 
-                    { Token.X, Token.Empty, Token.Empty }, 
-                    { Token.X, Token.Empty, Token.Empty }, 
-                    { Token.X, Token.Empty, Token.Empty }
+                    { Piece.X, Piece.Empty, Piece.Empty }, 
+                    { Piece.X, Piece.Empty, Piece.Empty }, 
+                    { Piece.X, Piece.Empty, Piece.Empty }
                 };
 
-                var player = new Player() { Position = Token.X, Row = 0, Column= 0 };
+                var player = new Player() { Symbol = Piece.X, Row = 0, Column= 0 };
 
                 WinnerCalculator winnerCalculator = new WinnerCalculator(player, currentBoard);
 
@@ -35,14 +35,14 @@ namespace TicTacToeTestLibrary
             [Test]
             public void GivenRowWin_ReturnWinnerTrue()
             {
-                var currentBoard = new Token[,]
+                var currentBoard = new Piece[,]
                 {
-                    { Token.X, Token.X, Token.X },
-                    { Token.Empty, Token.Empty, Token.Empty },
-                    { Token.Empty, Token.Empty, Token.Empty }
+                    { Piece.X, Piece.X, Piece.X },
+                    { Piece.Empty, Piece.Empty, Piece.Empty },
+                    { Piece.Empty, Piece.Empty, Piece.Empty }
                 };
 
-                var player = new Player() { Position = Token.X, Row = 0, Column = 2 };
+                var player = new Player() { Symbol = Piece.X, Row = 0, Column = 2 };
 
                 WinnerCalculator winnerCalculator = new WinnerCalculator(player, currentBoard);
 
@@ -52,14 +52,14 @@ namespace TicTacToeTestLibrary
             [Test]
             public void GivenDiagonalWin_ReturnWinnerTrue()
             {
-                var currentBoard = new Token[,]
+                var currentBoard = new Piece[,]
                 {
-                    { Token.X, Token.Empty, Token.Empty },
-                    { Token.Empty, Token.X, Token.Empty },
-                    { Token.Empty, Token.Empty, Token.X }
+                    { Piece.X, Piece.Empty, Piece.Empty },
+                    { Piece.Empty, Piece.X, Piece.Empty },
+                    { Piece.Empty, Piece.Empty, Piece.X }
                 };
 
-                var player = new Player() { Position = Token.X , Row = 0, Column = 0};
+                var player = new Player() { Symbol = Piece.X , Row = 0, Column = 0};
 
                 WinnerCalculator winnerCalculator = new WinnerCalculator(player, currentBoard);
 
@@ -69,14 +69,14 @@ namespace TicTacToeTestLibrary
             [Test]
             public void GivenReverseDiagonalWin_ReturnWinnerTrue()
             {
-                var currentBoard = new Token[,]
+                var currentBoard = new Piece[,]
                 {
-                    { Token.X, Token.O, Token.X },
-                    { Token.O, Token.X, Token.O },
-                    { Token.X, Token.Empty, Token.O }
+                    { Piece.X, Piece.O, Piece.X },
+                    { Piece.O, Piece.X, Piece.O },
+                    { Piece.X, Piece.Empty, Piece.O }
                 };
 
-                var player = new Player() { Position = Token.X, Row = 0, Column = 2 };
+                var player = new Player() { Symbol = Piece.X, Row = 0, Column = 2 };
 
                 WinnerCalculator winnerCalculator = new WinnerCalculator(player, currentBoard);
 
@@ -86,14 +86,14 @@ namespace TicTacToeTestLibrary
             [Test]
             public void GivenFullBoard_ReturnWinnerIsEqualToFalse()
             {
-                var currentBoard = new Token[,]
+                var currentBoard = new Piece[,]
                 {
-                    { Token.X, Token.X, Token.O },
-                    { Token.O, Token.O, Token.X },
-                    { Token.X, Token.O, Token.X }
+                    { Piece.X, Piece.X, Piece.O },
+                    { Piece.O, Piece.O, Piece.X },
+                    { Piece.X, Piece.O, Piece.X }
                 };
 
-                var player = new Player() { Position = Token.X };
+                var player = new Player() { Symbol = Piece.X };
 
                 WinnerCalculator winnerCalculator = new WinnerCalculator(player, currentBoard);
 
@@ -103,14 +103,14 @@ namespace TicTacToeTestLibrary
             [Test]
             public void GivenSingleMove_ReturnWinnerIsEqualToFalse()
             {
-                var currentBoard = new Token[,]
+                var currentBoard = new Piece[,]
                 {
-                    { Token.X, Token.Empty, Token.Empty },
-                    { Token.Empty, Token.Empty, Token.Empty },
-                    { Token.Empty, Token.Empty, Token.Empty }
+                    { Piece.X, Piece.Empty, Piece.Empty },
+                    { Piece.Empty, Piece.Empty, Piece.Empty },
+                    { Piece.Empty, Piece.Empty, Piece.Empty }
                 };
 
-                var player = new Player() { Position = Token.X, Row = 0, Column = 0 };
+                var player = new Player() { Symbol = Piece.X, Row = 0, Column = 0 };
 
                 WinnerCalculator winnerCalculator = new WinnerCalculator(player, currentBoard);
 

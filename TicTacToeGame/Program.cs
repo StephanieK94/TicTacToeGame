@@ -10,24 +10,21 @@ namespace TicTacToeGame
     {
         static void Main(string[] args)
         {
-            var game = new GameOperations();
-            var currentBoard = game.CreateNewGameBoard();
-
+            var game = new Game();
+            var currentBoard = game.board;
 
             var printer = new Printer();
-            var gameEnd = false;
+            var playerHasWon = false;
             var turnCount = 0;
 
             printer.PrintWelcome(currentBoard);
 
             var player = new Player();
-            player.Position = Token.O;
-
 
 
             do
             {
-                player.ChangePlayer(player.Position);
+                player.ChangePlayer(player);
 
                 var isValidMove = false;
                 var isValidPosition = false;
@@ -46,7 +43,7 @@ namespace TicTacToeGame
                     {
                         player.SetUserPosition(newUserMove);
 
-                        isValidPosition = game.ValidatePosition(player.Position, currentBoard[player.Row, player.Column]);
+                        isValidPosition = game.ValidatePosition(player.Symbol, currentBoard[player.Row, player.Column]);
 
                         if (isValidPosition == true)
                         {
@@ -59,15 +56,14 @@ namespace TicTacToeGame
                 printer.PrintAcceptedMove(currentBoard);
 
                 var winnerCalculator = new WinnerCalculator(player, currentBoard);
-                if (winnerCalculator.IsWinner == true) gameEnd = true;
+                if (winnerCalculator.IsWinner == true) playerHasWon = true;
 
-                //gameEnd = winnerCalculator.CalculateIfWinner(player, currentBoard);
                 turnCount++;
 
-            } while (gameEnd != true && turnCount != 9);
+            } while (playerHasWon != true && turnCount != 9);
 
             // Game ends, declare winner or if draw
-            if (gameEnd == false) printer.PrintDraw();
+            if (playerHasWon == false) printer.PrintDraw();
             else printer.PrintWinner(player);
         }
     }

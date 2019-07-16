@@ -4,7 +4,7 @@ namespace TicTacToeGame
 {
     public class Printer
     {
-        public void PrintWelcome(Token[,] currentBoard)
+        public void PrintWelcome(Piece[,] currentBoard)
         {
             Console.WriteLine("Welcome to Tic Tac Toe!\n");
             Console.WriteLine("Here's the current board:\n");
@@ -12,25 +12,28 @@ namespace TicTacToeGame
             PrintBoard(currentBoard);
         }
 
-        public void PrintBoard(Token[,] game)
+        public void PrintBoard(Piece[,] game)
         {
             for (var row = 0; row < 3; row++)
             {
+                Console.WriteLine();
+
                 for (var column = 0; column < 3; column++)
                 {
-                    if (game[row, column] == Token.Empty) Console.Write(" * ");
+                    if (game[row, column] == Piece.Empty) Console.Write(" * ");
                     else Console.Write($" {game[row, column]} ");
                 }
+
                 Console.WriteLine();
             }
         }
 
         public void PrintPromptForMove(Player player)
         {
-            Console.WriteLine($"Player {(int)player.Position} enter a coord x,y to place your {player.Position}: ");
+            Console.WriteLine($"Player {(int)player.Symbol} enter a coord x,y to place your {player.Symbol}: ");
         }
 
-        public void PrintAcceptedMove(Token[,] currentBoard)
+        public void PrintAcceptedMove(Piece[,] currentBoard)
         {
             Console.WriteLine("Move accepted, here's the current board:\n");
             PrintBoard(currentBoard);
@@ -49,7 +52,7 @@ namespace TicTacToeGame
 
         public void PrintWinner(Player player)
         {
-            Console.WriteLine($"Well done {player.Position}, you won the game!\n");
+            Console.WriteLine($"Well done {player.Symbol}, you won the game!\n");
         }
 
         public void PrintDraw()

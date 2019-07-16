@@ -11,17 +11,19 @@ namespace TicTacToeTestLibrary
     [TestFixture]
     public class PlayerTests
     {
-        private GameOperations operations = new GameOperations();
+        private Game operations = new Game();
         private Player player = new Player();
         
         [Test]
-        [TestCase(Token.X,Token.O)]
-        [TestCase(Token.O,Token.X)]
-        public void GivenPlayer_WhenNextTurn_ReturnsOtherPlayer(Token player1, Token player2)
+        [TestCase(Piece.X,Piece.O)]
+        [TestCase(Piece.O,Piece.X)]
+        [TestCase(Piece.Empty,Piece.X)]
+        public void GivenPlayer_WhenNextTurn_ReturnsOtherPlayer(Piece piece1, Piece piece2)
         {
-            player.ChangePlayer(player1);
+            player.Symbol = piece1;
+            player.ChangePlayer(player);
 
-            Assert.AreEqual(player2, player.Position);
+            Assert.AreEqual(piece2, player.Symbol);
         }
 
         [Test]

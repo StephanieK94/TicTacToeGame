@@ -8,7 +8,7 @@ namespace TicTacToeGame
 {
     public class Player
     {
-        public Token Position { get; set; }        
+        public Piece Symbol { get; set; }        
         public int Row { get; set; }
         public int Column { get; set; }
 
@@ -19,10 +19,10 @@ namespace TicTacToeGame
             this.Column = userMoves[1];
         }
 
-        public void ChangePlayer(Token playerPosition)
+        public void ChangePlayer(Player player)
         {
-            if (playerPosition == Token.X) this.Position = Token.O;
-            else this.Position = Token.X;
+            if (player.Symbol == Piece.X) this.Symbol = Piece.O;
+            else this.Symbol = Piece.X;
         }
     }
 }
