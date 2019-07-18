@@ -42,7 +42,7 @@ namespace TicTacToeTestLibrary
 
                 var player = new Player() { Symbol = Piece.X, Row = 0, Column = 2 };
 
-                WinnerCalculator winnerCalculator = new WinnerCalculator(player, currentBoard);
+                WinnerCalculator winnerCalculator = new WinnerCalculator( player , currentBoard );
 
                 Assert.True(winnerCalculator.IsWinner);
             }
@@ -59,7 +59,7 @@ namespace TicTacToeTestLibrary
 
                 var player = new Player() { Symbol = Piece.X , Row = 0, Column = 0};
 
-                WinnerCalculator winnerCalculator = new WinnerCalculator(player, currentBoard);
+                WinnerCalculator winnerCalculator = new WinnerCalculator( player , currentBoard );
 
                 Assert.True(winnerCalculator.IsWinner);
             }
@@ -76,7 +76,7 @@ namespace TicTacToeTestLibrary
 
                 var player = new Player() { Symbol = Piece.X, Row = 0, Column = 2 };
 
-                WinnerCalculator winnerCalculator = new WinnerCalculator(player, currentBoard);
+                WinnerCalculator winnerCalculator = new WinnerCalculator( player , currentBoard );
 
                 Assert.True(winnerCalculator.IsWinner);
             }
@@ -93,9 +93,9 @@ namespace TicTacToeTestLibrary
 
                 var player = new Player() { Symbol = Piece.X };
 
-                WinnerCalculator winnerCalculator = new WinnerCalculator(player, currentBoard);
+                WinnerCalculator winnerCalculator = new WinnerCalculator( player , currentBoard );
 
-                Assert.AreEqual(false, winnerCalculator.IsWinner);
+                Assert.AreEqual( false , winnerCalculator.IsWinner );
             }
 
             [Test]
@@ -110,7 +110,7 @@ namespace TicTacToeTestLibrary
 
                 var player = new Player() { Symbol = Piece.X, Row = 0, Column = 0 };
 
-                WinnerCalculator winnerCalculator = new WinnerCalculator(player, currentBoard);
+                WinnerCalculator winnerCalculator = new WinnerCalculator( player , currentBoard );
 
                 Assert.AreEqual(false, winnerCalculator.IsWinner);
             }
